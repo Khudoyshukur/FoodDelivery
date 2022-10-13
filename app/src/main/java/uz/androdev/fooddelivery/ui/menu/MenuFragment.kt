@@ -5,12 +5,14 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.recyclerview.widget.LinearSnapHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import uz.androdev.fooddelivery.R
 import uz.androdev.fooddelivery.databinding.FragmentMenuBinding
 import uz.androdev.fooddelivery.ui.base.BaseFragment
 
@@ -74,9 +76,22 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>(FragmentMenuBinding::infl
     private fun FragmentMenuBinding.bindBanners(
         isVisible: Flow<Boolean>
     ) {
+        with(rvBanners) {
+            adapter = BannerAdapter().also {
+                it.submitList(
+                    listOf(
+                        Banner(R.drawable.img_banner_3),
+                        Banner(R.drawable.img_banner_1),
+                        Banner(R.drawable.img_banner_2)
+                    )
+                )
+            }
+            LinearSnapHelper().attachToRecyclerView(this)
+        }
+
         repeatOnViewLifecycle(Lifecycle.State.STARTED) {
             isVisible.distinctUntilChanged().collect {
-                banners.isVisible = it
+                rvBanners.isVisible = it
                 btnQrCode.isVisible = it
                 txtCity.isVisible = it
             }

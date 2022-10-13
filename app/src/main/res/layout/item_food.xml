@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-        tools:src="@drawable/ic_qr_code" />
+        tools:src="@drawable/ic_launcher_background" />
 
     <TextView
         android:id="@+id/tv_title"

@@ -1,7 +1,8 @@
-package uz.androdev.fooddelivery
+package uz.androdev.fooddelivery.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import uz.androdev.fooddelivery.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

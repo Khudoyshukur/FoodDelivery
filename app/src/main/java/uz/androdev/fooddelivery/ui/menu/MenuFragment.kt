@@ -6,7 +6,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import uz.androdev.fooddelivery.databinding.FragmentMenuBinding
 import uz.androdev.fooddelivery.ui.base.BaseFragment
@@ -27,12 +30,14 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>(FragmentMenuBinding::infl
 
         binding.bindContent(
             categoriesState = viewModel.categoriesState,
+            foodsState = viewModel.foodsState,
             processAction = viewModel::processAction
         )
     }
 
     private fun FragmentMenuBinding.bindContent(
         categoriesState: StateFlow<CategoriesState>,
+        foodsState: StateFlow<FoodsState>,
         processAction: (Action) -> Unit
     ) {
 
@@ -51,6 +56,8 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>(FragmentMenuBinding::infl
                 processAction(Action.CategoryClicked(it))
             }
         )
+
+        bindFoods(foodsState = foodsState)
 
         bindLoading(
             isVisible = categoriesState.map { it.loadingCategories }
@@ -96,6 +103,17 @@ class MenuFragment : BaseFragment<FragmentMenuBinding>(FragmentMenuBinding::infl
                     rvCategories.isVisible = it
                 }
             }
+        }
+    }
+
+    private fun FragmentMenuBinding.bindFoods(
+        foodsState: Flow<FoodsState>
+    ) {
+        val adapter = FoodAdapter()
+        rvFoods.adapter = adapter
+
+        repeatOnViewLifecycle(Lifecycle.State.STARTED) {
+            foodsState.map { it.foods }.distinctUntilChanged().collect(adapter::submitList)
         }
     }
 

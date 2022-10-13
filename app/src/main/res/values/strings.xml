@@ -9,4 +9,5 @@
     <string name="error_occurred">Произошла ошибка при получении данных. И у нас нет кэшированных данных для отображения. Пожалуйста, проверьте подключение к Интернету и перезагрузите.</string>
     <string name="reload">Перезагрузить</string>
     <string name="moscow">Moscow</string>
+    <string name="food_price_format">From $%d</string>
 </resources>

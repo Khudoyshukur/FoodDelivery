@@ -14,14 +14,14 @@
         android:background="?selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
+        android:text="@string/moscow"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:drawableEndCompat="@drawable/ic_arrow_down_24"
         app:layout_constraintBottom_toBottomOf="@id/btn_qr_code"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btn_qr_code"
-        android:text="@string/moscow" />
+        app:layout_constraintTop_toTopOf="@id/btn_qr_code" />
 
     <ImageButton
         android:id="@+id/btn_qr_code"
@@ -77,9 +77,9 @@
             android:id="@+id/rv_foods"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tools:listitem="@layout/item_food" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -100,6 +100,7 @@
         android:layout_marginHorizontal="24dp"
         android:gravity="center"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

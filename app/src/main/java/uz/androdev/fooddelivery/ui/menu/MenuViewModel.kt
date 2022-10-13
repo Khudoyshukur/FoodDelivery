@@ -64,7 +64,7 @@ class MenuViewModel @Inject constructor(
         FoodsState(
             loadingFoods = loadingFoods,
             failedToLoadFoods = failedToLoadFoods,
-            foods = foodsList
+            foods = if (loadingFoods || failedToLoadFoods) emptyList() else foodsList
         )
     }.stateIn(
         scope = viewModelScope,

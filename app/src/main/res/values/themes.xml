@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.FoodDelivery" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#FD3A69</item>
-        <item name="colorPrimaryVariant">#B82A4D</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

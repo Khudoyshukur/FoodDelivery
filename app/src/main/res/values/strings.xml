@@ -5,4 +5,8 @@
     <string name="menu">Меню</string>
     <string name="profile">Профиль</string>
     <string name="basket">Корзина</string>
+    <string name="qr_code">QR код</string>
+    <string name="error_occurred">Произошла ошибка при получении данных. И у нас нет кэшированных данных для отображения. Пожалуйста, проверьте подключение к Интернету и перезагрузите.</string>
+    <string name="reload">Перезагрузить</string>
+    <string name="moscow">Moscow</string>
 </resources>

@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import dagger.hilt.android.AndroidEntryPoint
 import uz.androdev.fooddelivery.R
 import uz.androdev.fooddelivery.databinding.ActivityMainBinding
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

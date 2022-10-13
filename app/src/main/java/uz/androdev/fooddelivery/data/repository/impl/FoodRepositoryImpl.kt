@@ -9,6 +9,8 @@ import uz.androdev.fooddelivery.model.Category
 import uz.androdev.fooddelivery.model.Food
 import uz.androdev.fooddelivery.model.mapper.toCategory
 import uz.androdev.fooddelivery.model.mapper.toCategoryEntity
+import uz.androdev.fooddelivery.model.mapper.toFood
+import uz.androdev.fooddelivery.model.mapper.toFoodEntity
 import javax.inject.Inject
 
 /**
@@ -41,6 +43,22 @@ class FoodRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getFoodsByCategory(category: Category): List<Food> {
-        TODO("Not yet implemented")
+        try {
+            val remoteFoods = foodService.getFoodsByCategory(category.name).body()!!.foods!!
+            val entities = remoteFoods.mapNotNull {
+                withContext(Dispatchers.IO) {
+                    it.toFoodEntity(category.name)
+                }
+            }
+            foodDao.insertFoods(entities)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return foodDao.getAllFoods(category.name).map {
+            withContext(Dispatchers.IO) {
+                it.toFood()
+            }
+        }
     }
 }

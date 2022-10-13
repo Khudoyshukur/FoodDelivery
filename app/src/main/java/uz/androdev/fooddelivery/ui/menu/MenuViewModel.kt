@@ -53,6 +53,12 @@ class MenuViewModel @Inject constructor(
 
     init {
         processAction(Action.LoadCategories)
+
+        viewModelScope.launch {
+            selectedCategoryState.filterNotNull().collect {
+                println("AAA" + getFoodsByCategoryUseCase(it))
+            }
+        }
     }
 
     fun processAction(action: Action) {

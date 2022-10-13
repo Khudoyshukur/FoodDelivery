@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import uz.androdev.fooddelivery.data.db.dao.FoodDao
 import uz.androdev.fooddelivery.model.entity.CategoryEntity
+import uz.androdev.fooddelivery.model.entity.FoodEntity
 
 /**
  * Created by: androdev
@@ -15,7 +16,8 @@ import uz.androdev.fooddelivery.model.entity.CategoryEntity
  */
 @Database(
     entities = [
-        CategoryEntity::class
+        CategoryEntity::class,
+        FoodEntity::class
     ],
     exportSchema = true,
     version = 1
